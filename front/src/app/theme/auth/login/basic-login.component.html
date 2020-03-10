@@ -1,0 +1,105 @@
+<section class="login-block">
+  <form class="md-float-material " action="javascript:">
+    <!-- Container-fluid starts -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- Authentication card start -->
+          <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate class="md-float-material form-material">
+            <div class="text-center">
+              <img style="width: 120px;" src="assets/images/logomarca.png" alt="logo.png" />
+              <br />
+              <!-- <h3 class="text-center" i18n="@@common.nameplatform">PliQ</h3> -->
+            </div>
+            <div class="auth-box card">
+              <div class="card-block">
+                <div class="row m-b-20">
+                  <div class="col-md-12">
+                    <h3 class="text-center" i18n="@@common.signin">
+                      Informe seus dados abaixo
+                    </h3>
+                  </div>
+                </div>
+                <div *ngIf="f.submitted && error" class="alert alert-danger background-danger waves-light"
+                  i18n="@@common.userpassinvalid">
+                  <button type="button" class="close" appRemoveAlert>
+                    <i class="icofont icofont-close-line-circled text-white"></i>
+                  </button>
+                  E-mail ou senha inválidos!
+                </div>
+                <div class="form-group form-primary">
+                  <input type="email" id="email" name="email" class="form-control" [(ngModel)]="login.email"
+                    #email="ngModel" required email />
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@youremailaddress">E-mail *
+                  </label>
+                  <div *ngIf="f.submitted && email.invalid" class="text-uppercase text-danger"
+                    i18n="@@common.emailrequired">
+                    Campo obrigatório
+                  </div>
+                </div>
+                <div class="form-group form-primary">
+                  <input type="password" id="password" name="password" minlength="6" class="form-control"
+                    [(ngModel)]="login.password" #password="ngModel" required />
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@password">Senha * </label>
+                  <div *ngIf="f.submitted && password.invalid" class="text-uppercase text-danger"
+                    i18n="@@common.passwordrequired">
+                    Campo obrigatório
+                  </div>
+                  <div *ngIf="
+                      password.invalid && (password.dirty || password.touched)
+                    ">
+                    <div *ngIf="password.errors.minlength" class="text-danger" i18n="@@common.passwordlength">
+                      A senha deve ter no mínimo 6 caracteres
+                    </div>
+                  </div>
+                </div>
+                <div class="row m-t-25 text-left">
+                  <div class="col-12">
+                    <div class="checkbox-fade fade-in-primary d-">
+                      <label>
+                        <input type="checkbox" value="" />
+                        <span class="cr"><i class="cr-icon fa fa-check txt-primary"></i></span>
+                        <span class="text-inverse" i18n="@@common.rememberemail">Lembrar e-mail</span>
+                      </label>
+                    </div>
+                    <div class="forgot-phone text-right float-right">
+                      <a [routerLink]="['recover']" class="text-right f-w-600"
+                        i18n="@@common.forgotpassword">Esqueci minha senha</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row m-t-30">
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-md btn-block text-center m-b-20 ripple light"
+                      i18n="@@common.login">
+                      Entrar
+                    </button>
+                    <a [routerLink]="['/newuser']" class="text-center f-w-600 blue" i18n="@@common.newaccount">Não tem
+                      uma conta ? Experimente grátis!</a>
+                  </div>
+                </div>
+                <hr />
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-inverse text-center m-b-0">
+                    Dúvidas? Ligue ou converse via <br/>WhatsApp <b>(XX) XXXXX-XXXX</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+          <!-- end of form -->
+        </div>
+        <!-- end of col-sm-12 -->
+      </div>
+      <!-- end of row -->
+    </div>
+    <!-- end of container-fluid -->
+  </form>
+</section>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box">
+  <p style="font-size: 20px; color: white">Aguarde entrando</p>
+</ngx-spinner>

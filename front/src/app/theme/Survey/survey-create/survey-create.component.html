@@ -1,0 +1,39 @@
+<app-card [title]="'Crie uma nova pesquisa!'" [headerContent]="
+    'Crie uma nova pesquisa e veja como o status do seu cliente está atualmente!'
+  " [cardOptionBlock]="true">
+  <div class="content">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate>
+      <div class="row">
+        <div class="col-md-12">
+          <label class="col-form-label"><b>Título</b> (Digite o título de sua pesquisa)</label>
+          <input type="text" class="form-control" id="title" name="title"
+            [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" [(ngModel)]="survey.title" #title="ngModel"
+            required />
+          <div class="messages text-danger" *ngIf="f.submitted && title.invalid">
+            Preencha o título da pesquisa.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label class="col-form-label"><b>Descrição</b> (Digite a descrição de sua pesquisa)</label>
+          <input type="text" class="form-control" id="description" name="description"
+            [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" [(ngModel)]="survey.description"
+            #description="ngModel" required />
+          <div class="messages text-danger" *ngIf="f.submitted && description.invalid">
+            Preencha a descrição.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 text-right m-t-10">
+          <button type="submit" class="btn btn-success m-b-0 ripple light">
+            Salvar Pesquisa</button>&nbsp;&nbsp;
+          <button type="button" [routerLink]="['../survey-list/']" class="btn btn-grd-default ripple light ">
+            Voltar para Lista
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-card>

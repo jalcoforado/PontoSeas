@@ -1,0 +1,464 @@
+<div class="page-body" *ngIf="Companie != undefined">
+  <!--profile cover start-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="cover-profile">
+        <div class="profile-bg-img">
+          <img class="profile-bg-img img-fluid" src="assets/images/0.jpg" alt="bg-img" />
+          <div class="card-block user-info">
+            <div class="col-md-12">
+              <div class="media-left">
+                <a href="javascript:" class="profile-image">
+                  <img class="user-img img-radius" style="width: 150px;"
+                    src="assets/images/user-profile/default-user-profile.png" alt="user-img" />
+                </a>
+              </div>
+              <div class="media-body row">
+                <div class="col-lg-12">
+                  <div class="user-title">
+                    <h2>{{ Companie.full_name }}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="md-tabs md-card-tabs">
+        <ngb-tabset>
+          <ngb-tab title="General">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!-- personal card start -->
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-header-text">Informações gerais</h5>
+                    <button id="edit-btn" type="button" class="btn btn-sm btn-primary pull-right ripple light"
+                      (click)="toggleEditProfile()">
+                      <i class="icofont {{ editProfileIcon }}"></i>
+                    </button>
+                  </div>
+                  <div class="card-body">
+                    <div class="view-info" *ngIf="editProfile">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="general-info">
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-6">
+                                <div class="table-responsive">
+                                  <table class="table m-0">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">Nome Fantasia</th>
+                                        <td>{{ Companie.full_name }}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">
+                                          Caminho da logomarca
+                                        </th>
+                                        <td>{{ Companie.url_logo }}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Créditos</th>
+                                        <td>{{ Companie.whatsapp_credits }}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-12 col-xl-6">
+                                <div class="table-responsive">
+                                  <table class="table">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">Site</th>
+                                        <td>{{ Companie.site }}</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">Dias de Contrato</th>
+                                        <td>{{ Companie.days_contract }}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="edit-info" *ngIf="!editProfile">
+                      <form #f="ngForm" (ngSubmit)="f.form.valid && submitProfile(f)" novalidate>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="general-info form-material">
+                              <div class="row">
+                                <div class="col-lg-6 ">
+                                  <div class="material-group">
+                                    <div class="material-addone">
+                                      <i class="icofont icofont-user"></i>
+                                    </div>
+                                    <div class="form-group form-primary form-static-label">
+                                      <input type="text" name="footer-email" id="full_name" name="full_name"
+                                        class="form-control" [(ngModel)]="Companie.full_name" #full_name="ngModel"
+                                        required="" />
+                                      <span class="form-bar"></span>
+                                      <label class="float-label">Nome completo</label>
+                                    </div>
+                                  </div>
+
+                                  <div class="material-group">
+                                    <div class="material-addone">
+                                      <i class="icofont icofont-badge"></i>
+                                    </div>
+                                    <div class="form-group form-primary form-static-label">
+                                      <input type="text" name="url_logo" id="url_logo" class="form-control"
+                                        [(ngModel)]="Companie.url_logo" #url_logo="ngModel" />
+                                      <span class="form-bar"></span>
+                                      <label class="float-label">Caminho da logomarca</label>
+                                    </div>
+                                  </div>
+
+                                  <div class="material-group">
+                                    <div class="material-addone">
+                                      <i class="icofont icofont-social-whatsapp"></i>
+                                    </div>
+                                    <div class="form-group form-default form-static-label">
+                                      <input type="text" name="footer-email" class="form-control" required=""
+                                        placeholder="{{
+                                          Companie.whatsapp_credits
+                                        }}" disabled />
+                                      <span class="form-bar"></span>
+                                      <label class="float-label">Créditos</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- end of table col-lg-6 -->
+                                <div class="col-lg-6">
+                                  <div class="material-group">
+                                    <div class="material-addone">
+                                      <i class="icofont icofont-web"></i>
+                                    </div>
+                                    <div class="form-group form-primary form-static-label">
+                                      <input type="text" name="site" id="site" class="form-control"
+                                        [(ngModel)]="Companie.site" #site="ngModel" />
+                                      <span class="form-bar"></span>
+                                      <label class="float-label">Site</label>
+                                    </div>
+                                  </div>
+
+                                  <div class="material-group">
+                                    <div class="material-addone">
+                                      <i class="icofont icofont-paperclip"></i>
+                                    </div>
+                                    <div class="form-group form-default form-static-label">
+                                      <input type="text" name="footer-email" class="form-control" required=""
+                                        placeholder="{{
+                                          Companie.days_contract
+                                        }}" disabled />
+                                      <span class="form-bar"></span>
+                                      <label class="float-label">Dias de contrato</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-center">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">
+                                  Salvar
+                                </button>
+                                <a href="javascript:" id="edit-cancel" class="btn btn-default waves-effect"
+                                  (click)="toggleEditProfile()">Cancel</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Departamentos">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <!-- info card start -->
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-header-text">Departamentos</h5>
+                    <button type="button" class="btn btn-primary m-b-0 ripple light"
+                    (click)="openModalNewDepartment()">
+                    <i class="icofont icofont-plus m-r-5"></i>Novo
+                    Departamento
+                  </button>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6" *ngFor="let department of departments">
+                        <div class="card b-l-info business-info services">
+                          <div ngbDropdown class="card-header">
+                            <div class="service-header">
+                              <a href="javascript:;">
+                                <h5 class="card-header-text">
+                                  {{ department.name }}
+                                </h5>
+                              </a>
+                            </div>
+                            <span ngbDropdownToggle class="dropdown-toggle addon-btn text-muted pull-right service-btn"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="tooltip">
+                            </span>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right b-none services-list">
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-edit"></i>
+                                Editar</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-ui-delete"></i>
+                                Excluir</a>
+                              <a class="dropdown-item" href="javascript:;"><i class="icofont icofont-eye-alt"></i>
+                                Visualizar</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <p class="task-detail">
+                                  '{{department.name}}' criado  em {{department.createdat | date}}
+                                </p>
+                              </div>
+                              <!-- end of col-sm-8 -->
+                            </div>
+                            <!-- end of row -->
+                          </div>
+                          <!-- end of card-body -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- info card end -->
+                <app-modal-animation [modalID]="'modal-new-department'" [modalClass]="'md-effect-1'">
+                  <h3 style="background-color: #4680ff">Novo Departamento</h3>
+                  <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmitDeparment(f)" novalidate
+                    class="md-float-material form-material">
+                    <div class="auth-box card">
+                      <div class="card-block">
+                        <div class="form-group form-primary">
+                          <input type="text" id="name" name="name" class="form-control"
+                            [(ngModel)]="newDepartament.name" #name="ngModel" required />
+                          <span class="form-bar"></span>
+                          <label class="float-label">Titulo</label>
+                          <div *ngIf="f.submitted && name.invalid" class="text-uppercase text-danger">
+                            O Titulo é obrigatório.
+                          </div>
+                        </div>
+                        <div class="row m-t-30">
+                          <div class="col-md-12">
+                            <button type="submit"
+                              class="btn btn-primary btn-md btn-block text-center m-b-20 ripple light">
+                              Salvar Departamento
+                            </button>
+                          </div>
+                        </div>
+                        <hr />
+                      </div>
+                    </div>
+                  </form>
+                  <button (click)="closeModalDepartment()" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                  </button>
+                </app-modal-animation>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Usuários">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <!-- user contact card left side start -->
+                    <div class="card">
+                      <div class="card-header contact-user">
+                        <img class="img-radius" style="width: 50px"
+                          src="assets/images/user-profile/default-user-profile.png" alt="contact-user" />
+                        <h4>{{ nameUser }}</h4>
+                      </div>
+                      <div class="card-body groups-contact">
+                        <h4>Departamentos</h4>
+                        <ul class="list-group" *ngFor="let department of departments">
+                          <li class="list-group-item justify-content-between">
+                            {{department.name}}
+                            <span class="badge badge-default badge-pill">{{department.users?.length || '0'}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- user contact card left side end -->
+                  </div>
+                  <div class="col-lg-9">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- contact data table card start -->
+                        <div class="card">
+                          <div class="card-header animation-model">
+                            <h5>Usuários</h5>
+                            <button type="button" class="btn btn-primary m-b-0 ripple light"
+                              (click)="openModalNewUser()">
+                              <i class="icofont icofont-plus m-r-5"></i>Novo
+                              usuário
+                            </button>
+                          </div>
+                          <div class="card-body">
+                            <div class="dt-responsive" *ngIf="usersCompanie | async as usersCompanie">
+                              <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">
+                                  <div>
+                                    <label class="label-control">Visualizar
+                                      <select class="form-control input-sm full-data-show-entry"
+                                        [(ngModel)]="rowsOnPage">
+                                        <option [ngValue]="10">10</option>
+                                        <option [ngValue]="25">25</option>
+                                        <option [ngValue]="50">50</option>
+                                        <option [ngValue]="100">100</option>
+                                      </select>
+                                      registros
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                  <div style="text-align: right;">
+                                    <label>Pesquisar:
+                                      <input type="search" [(ngModel)]="filterQuery"
+                                        class="form-control input-sm full-data-search" placeholder="Search name" />
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="table-responsive">
+                                <table class="table table-striped table-bordered full-data-table" [mfData]="
+                                    usersCompanie | filterUsers: filterQuery
+                                  " #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
+                                  [(mfSortOrder)]="sortOrder">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        <mfDefaultSorter by="full_name">Nome</mfDefaultSorter>
+                                      </th>
+                                      <th>
+                                        <mfDefaultSorter by="email">E-mail</mfDefaultSorter>
+                                      </th>
+                                      <th>
+                                        <mfDefaultSorter by="last_acess">Último acesso</mfDefaultSorter>
+                                      </th>
+                                      <th>
+                                        <mfDefaultSorter by="createdat">Criado em</mfDefaultSorter>
+                                      </th>
+                                      <th>
+                                        <mfDefaultSorter>Ações</mfDefaultSorter>
+                                      </th>
+                                    </tr>
+                                    <tr></tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let item of mf.data">
+                                      <td>{{ item.full_name }}</td>
+                                      <td>{{ item.email }}</td>
+                                      <td>{{ item.last_acess | date }}</td>
+                                      <td>{{ item.createdat | date }}</td>
+                                      <td ngbDropdown>
+                                        <button ngbDropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fa fa-cog" aria-hidden="true"></i>
+                                        </button>
+                                        <div ngbDropdownMenu
+                                          class="dropdown-menu dropdown-menu-right b-none contact-menu">
+                                          <a class="dropdown-item" href="javascript:;"><i
+                                              class="icofont icofont-eye-alt"></i>View</a>
+                                          <a class="dropdown-item" href="javascript:;"><i
+                                              class="icofont icofont-ui-delete"></i>Delete</a>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>Nome</th>
+                                      <th>E-mail</th>
+                                      <th>Último acesso</th>
+                                      <th>Criado em</th>
+                                      <th>Action</th>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="7">
+                                        <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+                                      </td>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <app-modal-animation [modalID]="'modal-new-user'" [modalClass]="'md-effect-1'">
+                  <h3 style="background-color: #4680ff">Novo usuário</h3>
+                  <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate
+                    class="md-float-material form-material">
+                    <div class="auth-box card">
+                      <div class="card-block">
+                        <div *ngIf="errorUser != null" class="text-uppercase text-danger" style="margin-bottom: 10px;">
+                          {{ errorUser }}
+                        </div>
+                        <div class="form-group form-primary">
+                          <input type="text" id="full_name" name="full_name" class="form-control"
+                            [(ngModel)]="newUser.full_name" #full_name="ngModel" required />
+                          <span class="form-bar"></span>
+                          <label class="float-label">Nome</label>
+                          <div *ngIf="f.submitted && full_name.invalid" class="text-uppercase text-danger">
+                            O nome é obrigatório.
+                          </div>
+                        </div>
+                        <div class="form-group form-primary">
+                          <input type="email" id="email" name="email" class="form-control" [(ngModel)]="newUser.email"
+                            #email="ngModel" required />
+                          <span class="form-bar"></span>
+                          <label class="float-label">E-mail</label>
+                          <div *ngIf="f.submitted && email.invalid" class="text-uppercase text-danger">
+                            O email é obrigatório.
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-xl-8">
+                          <ng-select [ngClass]="'ng-select'" [options]="dropdownDepart"  placeholder="Selecione o Deparmtamento" [(ngModel)]="newUser.fk_department" name="fk_department" #fk_department="ngModel" required> </ng-select>
+                          <div *ngIf="f.submitted && fk_department.invalid" class="text-uppercase text-danger">
+                            O Departamento é obrigatório.
+                          </div>
+                        </div>
+                        <div class="row m-t-30">
+                          <div class="col-md-12">
+                            <button type="submit"
+                              class="btn btn-primary btn-md btn-block text-center m-b-20 ripple light">
+                              Send to User
+                            </button>
+                          </div>
+                        </div>
+                        <hr />
+                      </div>
+                    </div>
+                  </form>
+                  <button (click)="closeModalUser()" aria-label="Close" class="md-close-btn">
+                    <i class="icofont icofont-ui-close"></i>
+                  </button>
+                </app-modal-animation>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>

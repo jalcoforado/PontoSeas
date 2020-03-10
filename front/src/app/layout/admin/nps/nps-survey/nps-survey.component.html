@@ -1,0 +1,103 @@
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="md-float-material " action="javascript:">
+          <div class="text-center">
+          </div>
+          <div class="auth-box card" style="max-width: 700px;">
+            <div class="card-block">
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h2 class="text-center"> Create you Survey</h2>
+                </div>
+                <div class="col-md-12">
+                  <p class="text-center m-b-0">(Descrição)</p>
+                </div>
+              </div>
+              <div class="content">
+                <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label class="col-form-label"><b>Title</b> (Descrição)</label>
+                      <input type="text" class="form-control" id="title" name="title"
+                        [ngClass]="{ 'is-invalid':f.submitted && title.invalid }" [(ngModel)]="survey.title"
+                        #title="ngModel" required>
+                      <div class="messages text-danger" *ngIf="f.submitted && title.invalid">
+                        Preencha o titulo da Pesquisa
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="col-form-label"><b>Decription</b> (Descrição)</label>
+                      <textarea type="text" class="form-control" id="description" name="description"
+                        [ngClass]="{ 'is-invalid':f.submitted && description.invalid }" [(ngModel)]="survey.description"
+                        #description="ngModel" required></textarea>
+                      <div class="messages text-danger" *ngIf="f.submitted && description.invalid">
+                        Preencha a Descrição
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="col-form-label"><b>Thank you message </b>(Descrição)</label>
+                      <textarea type="text" class="form-control" id="thankyou_message" name="thankyou_message"
+                        [ngClass]="{ 'is-invalid':f.submitted && thankyou_message.invalid }"
+                        [(ngModel)]="survey.thankyou_message" #thankyou_message="ngModel" required></textarea>
+                      <div class="messages text-danger" *ngIf="f.submitted && thankyou_message.invalid">
+                        Preencha sua mensagem de agradecimento
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row m-t-10">
+                    <div class="col-md-12">
+                      <label><b>Questions</b></label>
+                      <div class="p-20 z-depth-bottom-0 waves-effect" placement="bottom" ngbTooltip=".z-depth-bottom-0">
+                        <input type="text" class="form-control" id="titleq" name="titleq" placeholder="Title in Questions"
+                          [ngClass]="{ 'is-invalid':f.submitted && titleq.invalid }" [(ngModel)]="question.title"
+                          #titleq="ngModel" required>
+                        <div class="messages text-danger" *ngIf="f.submitted && titleq.invalid">
+                          Preencha o title question
+                        </div>
+                        <div class=" col-md-10 m-t-10">
+                          <p><b>Low score label</b></p>
+                          <input type="text" class="form-control" id="low_score_label" name="low_score_label"
+                            [ngClass]="{ 'is-invalid':f.submitted && low_score_label.invalid }"
+                            [(ngModel)]="question.low_score_label" #low_score_label="ngModel" required>
+
+                          <p><b>High score label</b></p>
+                          <input type="text" class="form-control" id="high_score_label" name="high_score_label"
+                            [ngClass]="{ 'is-invalid':f.submitted && high_score_label.invalid }"
+                            [(ngModel)]="question.high_score_label" #high_score_label="ngModel" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 m-t-10">
+                      <label><b>FeedBack</b></label>
+                      <div class="p-20 z-depth-bottom-0 waves-effect" placement="bottom" ngbTooltip=".z-depth-bottom-0">
+                          <input type="text" class="form-control" id="titleQ2" placeholder="Title in FeedBack" name="titleQ2"
+                          required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12 text-right m-t-10">
+                      <button type="submit" class="btn btn-primary m-b-0 ripple light">Submit</button>
+                      <button type="button" class="btn btn-default m-b-0 ripple light">Preview</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-md-10">
+                  <p class="text-inverse text-left m-b-0">Desenvolvido por <a href="https://www.explique.com.br" rel="noopener noreferrer" target="_blank">eXplique</a>.</p>
+                </div>
+                <div class="col-md-2 text-right">
+                  <img src="assets/images/pliq-sunrise-small.png" alt="small-logo.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

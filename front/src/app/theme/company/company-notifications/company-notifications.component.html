@@ -1,0 +1,162 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-header-text">Notificações</h5>
+    <button id="edit-btn" type="button" class="btn btn-sm btn-primary pull-right ripple light"
+      (click)="toggleEditProfile()">
+      <i class="icofont {{ editProfileIcon }}"></i>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="view-info" *ngIf="editProfile">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="general-info">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="material-group">
+                  <div class="form-group form-primary form-static-label" style="margin-bottom: 80px;">
+                    <label class="col-form-label">
+                      <i class="icofont icofont-emo-worried"></i><b> Detratores</b></label>
+                    <div
+                      [innerHTML]="Companie.notification_detractor ==  null ? 'Ninguém quer saber sobre detratores? Esquisito!!' : Companie.notification_detractor">
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="material-group">
+                  <div class="form-group form-primary form-static-label" style="margin-bottom: 80px;">
+                    <label class="col-form-label">
+                      <i class="icofont icofont-emo-expressionless"></i><b> Neutros</b></label>
+                    <div
+                      [innerHTML]="Companie.notification_neutral ==  null ? 'Só porque é neutro não significa que não é importante!' : Companie.notification_neutral">
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="material-group">
+                  <div class="form-group form-primary form-static-label" style="margin-bottom: 80px;">
+                    <label class="col-form-label">
+                      <i class="icofont icofont-emo-laughing"></i><b> Promotores</b></label>
+                    <div
+                      [innerHTML]="Companie.notification_promoter ==  null ? 'Sempre bom seguir um cliente fiel, você não acha?' : Companie.notification_promoter">
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- end of table col-lg-6 -->
+              <div class="col-lg-6">
+                <div class="material-group">
+                  <div class="form-group form-primary form-static-label">
+                    <label class="col-form-label">
+                      <i class="icofont icofont-phone-circle"></i><b>Números que serão notificados</b></label>
+                    <input type="text" name="notification_phone" id="notification_phone" class="form-control"
+                      [(ngModel)]="
+                        Companie.notification_phone
+                      " #notification_phone="ngModel" disabled />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="material-group">
+                  <div class="form-group form-primary form-static-label m-t-20">
+                    <label class="float-label">
+                      <i class="icofont icofont-info-circle"></i> As mensagens serão disparadas após a coleta dos
+                      feedbacks.</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="edit-info" *ngIf="!editProfile">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && UpdateCompany(f)" novalidate>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="general-info form-material">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="material-group">
+                    <div class="form-group form-primary form-static-label" style="margin-bottom: 80px;">
+                      <label class="col-form-label">
+                        <i class="icofont icofont-emo-worried"></i><b> Detratores</b> (Ninguém quer saber sobre
+                        detratores? Esquisito!!)</label>
+                      <quill-editor id="notification_detractor" [options]="editorOptions"
+                        [(ngModel)]="Companie.notification_detractor" name="notification_detractor"
+                        #notification_detractor="ngModel"></quill-editor>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="material-group">
+                    <div class="form-group form-primary form-static-label" style="margin-bottom: 80px;">
+                      <label class="col-form-label">
+                        <i class="icofont icofont-emo-expressionless"></i><b> Neutros</b> (Só porque é neutro não
+                        significa que não é importante!)</label>
+                      <quill-editor id="notification_neutral" [options]="editorOptions"
+                        [(ngModel)]="Companie.notification_neutral" name="notification_neutral"
+                        #notification_neutral="ngModel"></quill-editor>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="material-group">
+                    <div class="form-group form-primary form-static-label" style="margin-bottom: 80px;">
+                      <label class="col-form-label">
+                        <i class="icofont icofont-emo-laughing"></i><b> Promotores</b> (Sempre bom seguir um cliente
+                        fiel,
+                        você não acha?)</label>
+                      <quill-editor id="notification_promoter" [options]="editorOptions"
+                        [(ngModel)]="Companie.notification_promoter" name="notification_promoter"
+                        #notification_promoter="ngModel"></quill-editor>
+                    </div>
+                  </div>
+                </div>
+                <!-- end of table col-lg-6 -->
+                <div class="col-lg-6">
+                  <div class="material-group">
+                    <div class="material-addone">
+                      <i class="icofont icofont-phone-circle"></i>
+                    </div>
+                    <div class="form-group form-primary form-static-label m-t-20">
+                      <input type="text" name="notification_phone" id="notification_phone" class="form-control"
+                        [(ngModel)]="
+                          Companie.notification_phone
+                        " #notification_phone="ngModel" />
+                      <span class="form-bar"></span>
+                      <label class="float-label">Números que serão notificados</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="material-group">
+                    <div class="form-group form-primary form-static-label">
+                      <label class="float-label">
+                        <i class="icofont icofont-info-circle"></i> As mensagens serão disparadas após a coleta dos
+                        feedbacks.</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center m-t-35 m-b-20">
+                <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20">
+                  Salvar
+                </button>
+                <a href="javascript:" id="edit-cancel" class="btn btn-danger waves-effect"
+                  (click)="toggleEditProfile()">Cancelar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+{
+  "id": "/subscriptions/0913cbcc-b0ea-472f-9011-eb60d6da5613/resourceGroups/CSXTeam/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-2a26d018-8149",
+  "name": "Microsoft.Web-WebApp-Portal-2a26d018-8149",
+  "properties": {
+    "templateHash": "4051123741165315537",
+    "parameters": {
+      "subscriptionId": {
+        "type": "String",
+        "value": "0913cbcc-b0ea-472f-9011-eb60d6da5613"
+      },
+      "name": {
+        "type": "String",
+        "value": "csxsandboxapi"
+      },
+      "location": {
+        "type": "String",
+        "value": "Brazil South"
+      },
+      "hostingEnvironment": {
+        "type": "String",
+        "value": ""
+      },
+      "hostingPlanName": {
+        "type": "String",
+        "value": "ASP-CSXTeam-a37b"
+      },
+      "serverFarmResourceGroup": {
+        "type": "String",
+        "value": "CSXTeam"
+      },
+      "alwaysOn": {
+        "type": "Bool",
+        "value": false
+      },
+      "sku": {
+        "type": "String",
+        "value": "Free"
+      },
+      "skuCode": {
+        "type": "String",
+        "value": "F1"
+      },
+      "workerSize": {
+        "type": "String",
+        "value": "0"
+      },
+      "workerSizeId": {
+        "type": "String",
+        "value": "0"
+      },
+      "numberOfWorkers": {
+        "type": "String",
+        "value": "1"
+      },
+      "linuxFxVersion": {
+        "type": "String",
+        "value": "DOTNETCORE|2.2"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Running",
+    "timestamp": "2019-09-20T23:04:49.1097321Z",
+    "duration": "PT3.3774081S",
+    "correlationId": "54a607c4-e350-4176-a2dc-b879369fbb6a",
+    "providers": [
+      {
+        "namespace": "Microsoft.Web",
+        "resourceTypes": [
+          {
+            "resourceType": "sites",
+            "locations": [
+              "brazilsouth"
+            ]
+          },
+          {
+            "resourceType": "serverfarms",
+            "locations": [
+              "brazilsouth"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/0913cbcc-b0ea-472f-9011-eb60d6da5613/resourceGroups/CSXTeam/providers/Microsoft.Web/serverfarms/ASP-CSXTeam-a37b",
+            "resourceType": "Microsoft.Web/serverfarms",
+            "resourceName": "ASP-CSXTeam-a37b"
+          }
+        ],
+        "id": "/subscriptions/0913cbcc-b0ea-472f-9011-eb60d6da5613/resourceGroups/CSXTeam/providers/Microsoft.Web/sites/csxsandboxapi",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "csxsandboxapi"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}

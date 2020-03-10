@@ -1,0 +1,21 @@
+.adjust-label-thanks {
+  margin-top: 120px;
+}
+
+:host #thankyou_message /deep/ .ql-container {
+  height: 250px;
+}
+
+:host #thankyou_message_neutral /deep/ .ql-container {
+  height: 250px;
+}
+
+:host #thankyou_message_detractor /deep/ .ql-container {
+  height: 250px;
+}
+
+@media (max-width: 507px) {
+  .adjust-label-thanks {
+    margin-top: 200px;
+  }
+}

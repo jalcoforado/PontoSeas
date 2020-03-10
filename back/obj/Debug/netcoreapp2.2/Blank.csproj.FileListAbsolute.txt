@@ -1,0 +1,17 @@
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\deployment.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\deployment_operations.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\properties\launchSettings.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\Blank.deps.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\Blank.runtimeconfig.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\Blank.runtimeconfig.dev.json
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\Blank.dll
+C:\Jorge\PontoSeas\back\bin\Debug\netcoreapp2.2\Blank.pdb
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.csprojAssemblyReference.cache
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.RazorAssemblyInfo.cache
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.RazorAssemblyInfo.cs
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.AssemblyInfoInputs.cache
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.AssemblyInfo.cs
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.RazorTargetAssemblyInfo.cache
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.dll
+C:\Jorge\PontoSeas\back\obj\Debug\netcoreapp2.2\Blank.pdb

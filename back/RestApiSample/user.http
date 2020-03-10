@@ -1,0 +1,11 @@
+POST http://localhost:5000/api/Users/addUser HTTP/1.1
+Content-Type: application/json
+
+{
+    "full_name": "Fulano de tal",
+    "email": "cesar.rabelo@fortaleza.ce.gov.br",
+    "password": "a1b2c3_2020",
+    "language": "pt",
+    "company_name": "company1",
+    "termuse": "true"
+}

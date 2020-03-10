@@ -1,0 +1,12 @@
+#Recovery password
+
+POST http://localhost:5000/api/Actions/Save HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_company": "2",
+    "fk_user_create": "2",
+    "type": "Login",
+    "message": "Usuário César Rabelo fez login"
+}
+

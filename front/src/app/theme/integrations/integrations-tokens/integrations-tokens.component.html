@@ -1,0 +1,60 @@
+<div class="card-header animation-model">
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <h5>Tokens</h5>
+      <!-- <button type="button" (click)="newToken()" class="btn btn-primary m-b-0 ripple light">
+        <i class="icofont icofont-plus m-r-5"></i>Novo Token
+      </button> -->
+    </div>
+  </div>
+</div>
+<div class="card-body">
+  <div class="table-responsive" style="padding-bottom: 50px;">
+    <table class="table table-striped table-bordered full-data-table"
+      [mfData]="dataTokens" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+      [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+        <tr>
+          <th style="width: 150px">
+            <mfDefaultSorter by="code">Codigo</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="createdat">Data e Hora</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="hits">Hits</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="active">Status</mfDefaultSorter>
+          </th>
+        </tr>
+        <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!(dataTokens.length > 0)" class="text-center">
+          <td colspan="10">Essa empresa não possui Tokens.</td>
+        </tr>
+        <tr *ngFor="let item of mf.data">
+        <td>{{item.code}}</td>
+        <td>{{item.createdat | date:'medium'}}</td>
+        <td>{{item.hits}}</td>
+        <td>{{item.active}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Codigo</th>
+          <th>Data e Hora</th>
+          <th>Hits</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

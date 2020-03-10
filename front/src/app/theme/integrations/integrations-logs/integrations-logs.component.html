@@ -1,0 +1,57 @@
+<div class="card-header animation-model">
+  <div class="row">
+    <div class="col-md-6 col-sm-6">
+      <h5>Logs</h5>
+    </div>
+  </div>
+</div>
+<div class="card-body">
+  <div class="table-responsive" style="padding-bottom: 50px;">
+    <table class="table table-striped table-bordered full-data-table"
+      [mfData]="dataTokensLogs" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+      [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+        <tr>
+          <th style="width: 150px">
+            <mfDefaultSorter by="code">Data e Hora</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="ip">Endereço IP</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="hits">Método HTTP</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="active">Url</mfDefaultSorter>
+          </th>
+        </tr>
+        <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!(dataTokensLogs.length > 0)" class="text-center">
+          <td colspan="10">Essa empresa não possui Logs.</td>
+        </tr>
+        <tr *ngFor="let item of mf.data">
+        <td>{{item.createdat | date :'medium'}}</td>
+        <td>{{item.ip}}</td>
+        <td>{{item.http_method}}</td>
+        <td>{{item.url_method}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Codigo</th>
+          <th>Data e Hora</th>
+          <th>Hits</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="card">
+  <div class="card-header animation-model">
+    <h5>Pesquisas</h5>
+    <button type="button" [routerLink]="['../survey-create/']" class="btn btn-primary m-b-0 ripple light"><i
+        class="icofont icofont-plus m-r-5"></i>Nova Pesquisa</button>
+  </div>
+  <div class="card-body">
+    <div class="dt-responsive" style="min-height: 400px" *ngIf="dataSurvey | async as dataSurvey">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div>
+            <label style="width: 100%">Pesquisar:
+              <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search"
+                placeholder="Filtro pelo título da pesquisa." style="width: 90% !important">
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">
+          <div>
+            <label class="label-control">Mostrar
+              <select class="form-control input-sm full-data-show-entry" [(ngModel)]="rowsOnPage">
+                <option [ngValue]="10">10</option>
+                <option [ngValue]="25">25</option>
+                <option [ngValue]="50">50</option>
+                <option [ngValue]="100">100</option>
+              </select>
+              pesquisas
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive" style="padding-bottom: 50px;">
+        <table class="table table-striped table-bordered full-data-table"
+          [mfData]="dataSurvey | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+          [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+          <thead>
+            <tr>
+              <th style="width: 150px">
+                <mfDefaultSorter by="resposes">Ações</mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter by="title">Títulos</mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter by="responses">Informações</mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter by="createdat">Criado em</mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter by="active">Status</mfDefaultSorter>
+              </th>
+            </tr>
+            <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mf.data">
+              <td>
+                <div ngbDropdown class="btn-group dropdown-split-primary">
+                  <button type="button" class="btn btn-primary light" title="Ir para o Dashboard"
+                    (click)="dashboardSurvey(item.responses, item.id_survey)"><i
+                      class="icofont icofont-dashboard-web"></i></button>
+                  <button ngbDropdownToggle type="button" class="btn btn-primary dropdown-toggle-split light"
+                    title="Mais opções" style="background: #21374afa;">
+                    <span class="sr-only">Toggle primary</span>
+                  </button>
+                  <div ngbDropdownMenu>
+                    <a class="dropdown-item ripple light" href="javascript:"
+                      [routerLink]="['../survey-edit/' + item.id_survey]">
+                      <i class="icofont icofont-edit"></i> Editar pesquisa</a>
+                    <a class="dropdown-item ripple light" href="javascript:" (click)="cloneSurvey(item.id_survey)"><i
+                        class="icofont icofont-copy"></i> Clonar pesquisa </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item ripple light" href="javascript:" (click)="deleteSurvey(item)"><i
+                        class="icofont icofont-trash"></i> Deletar pesquisa </a>
+                  </div>
+                </div>
+              </td>
+              <td><a target="_blank"
+                  title="Visualizar pesquisa em modo resposta"><b>{{item.title}}</b></a>
+                  <a href="javascript:" ngxClipboard [cbContent]="url + item.id_survey "
+                  (click)="modalFinish('Link da pesquisa copiado com sucesso!!!')">
+                  <h4 style="display: inline" class="m-l-10"><i class="icofont icofont-copy"
+                      title="Copiar link da pesquisa"></i></h4>
+                </a>
+                <!-- <a  href="https://facebook.com/sharer/sharer.php?u={{url}}{{item.url_survey}}" target="_blank" class="btn btn-facebook btn-icon ripple light" style="margin-right: 3px;"><i class="icofont icofont-social-facebook"></i></a>
+                  <a href="https://wa.me/?text={{url}}{{item.url_survey}}" data-action="share/whatsapp/share" target="_blank" class="btn btn-success btn-icon ripple light" style="margin-right: 3px;"><i class="icofont icofont-social-whatsapp"></i></a> -->
+                <!-- <a href="javascript:"  ngxClipboard [cbContent]="url + item.url_survey" class="btn btn-inverse btn-icon ripple light" style="margin-right: 3px;"><i class="icofont icofont-copy"></i></a> -->
+              </td>
+              <td>{{item.contacts}} Contatos 
+                <br/>
+                {{item.responses}} Respostas
+              </td>
+              <td>{{item.createdat | date: 'short' }}</td>
+              <td>
+                <ui-switch class="js-single" switchColor="#fff" size="medium" [checked]="item.active"
+                  (change)="changeActive(item.id_survey, item.active)" title="Modificar status da pesquisa"></ui-switch>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Ações</th>
+              <th>Título</th>
+              <th>Informações</th>
+              <th>Criado em</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td colspan="6">
+                <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <!-- </app-card> -->
+    <!-- </div>
+  </div> -->
+  </div>

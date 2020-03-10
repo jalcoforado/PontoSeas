@@ -1,0 +1,22 @@
+#Recovery password
+POST http://localhost:5000/api/Login/RecoveryPassword HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "cesarrabelo@gmail.com"
+}
+
+POST http://localhost:5000/api/Login/security HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "cesarrabelo@gmail.com",
+    "password": "123456"
+}
+
+GET http://localhost:5000/api/Login/status HTTP/1.1
+
+GET http://localhost:5000/api/Login/UserDetail HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjIiLCJJRF9DT01QQU5ZIjoiMiIsIk5BTUVfVVNFUiI6IkPDqXNhciBSYWJlbG8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQ8Opc2FyIFJhYmVsbyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Ik1hbmFnZXIiLCJleHAiOjE1ODExNzYyNDcsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCJ9.o9WSwxlTHIkIk43HmMwskCbGfcHC_Oe8jT1ApyNYW5Q"
+

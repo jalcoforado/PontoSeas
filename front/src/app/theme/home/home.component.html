@@ -1,0 +1,10 @@
+<nps-score [dataCard]="dataCard" [countViews]="countViews"></nps-score>
+<div class="row">
+  <div class="col-md-4">
+    <nps-score-chart [dataCard]="dataCard"></nps-score-chart>
+  </div>
+  <div class="col-md-8">
+    <nps-score-distribution [dataScoreDistribution]="dataScoreDistribution" [title]="'Distribuição dos Scores NPS'">
+    </nps-score-distribution>
+  </div>
+</div>

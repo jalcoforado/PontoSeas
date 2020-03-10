@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header animation-model">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h5>Integrações</h5>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <ngb-tabset>
+          <ngb-tab title="Tokens">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <integrations-tokens></integrations-tokens>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Logs">
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <integrations-logs></integrations-logs>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Aplicativos" [disabled]=true>
+            <ng-template ngbTabContent>
+              <div [@fadeInOutTranslate] class="m-t-15">
+                <p class="m-4">Coming...</p>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>

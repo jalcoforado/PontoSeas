@@ -1,0 +1,25 @@
+#New Token
+
+POST http://localhost:5000/api/Tokens/Save HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_company": "2",
+    "fk_user_create": "2"
+}
+
+GET http://localhost:5000/api/Tokens/getByCompany/2 HTTP/1.1
+
+//New token logs
+
+POST http://localhost:5000/api/TokenLogs/Save HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_token": 1,
+    "ip": "177.209.226.155",
+    "http_method": "GET",
+    "url_method": "api/1/usuario/validate-checkin-status?api_token=85723a4a17d048c682d636d84a27967a",
+    "status": "200"
+}
+

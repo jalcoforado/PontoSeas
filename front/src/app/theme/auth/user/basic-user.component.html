@@ -1,0 +1,160 @@
+<section class="login-block">
+  <form class="md-float-material " action="javascript:">
+    <!-- Container-fluid starts -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- Authentication card start -->
+          <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate class="md-float-material form-material">
+            <div class="text-center">
+              <img style="width: 120px;" src="assets/images/logomarca.png" alt="logo.png">
+              <br/>
+              <!-- <h3 class="text-center" i18n='@@NewUserAccount'>PliQ</h3> -->
+            </div>
+            <div class="auth-box card">
+              <div class="card-block">
+                <div class="row m-b-20">
+                  <div class="col-md-12">
+                    <h3 class="text-center" i18n="@@NewUserAccount">
+                      Crie sua conta gratuita agora
+                    </h3>
+                    <div *ngIf="msgErro != undefined" class="alert alert-danger background-danger waves-light"
+                      i18n="@@common.userpassinvalid">
+                      <button type="button" class="close" appRemoveAlert>
+                        <i class="icofont icofont-close-line-circled text-white"></i>
+                      </button>
+                      {{ msgErro.error }}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group form-primary">
+                  <input type="text" id="full_name" name="full_name" class="form-control"
+                    [(ngModel)]="userSimple.full_name" #full_name="ngModel" required />
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@yourname">Nome *</label>
+                  <div *ngIf="f.submitted && full_name.invalid" class="text-uppercase text-danger"
+                    i18n="@@full_namerequired">
+                    Campo obrigatório
+                  </div>
+                </div>
+                <div class="form-group form-primary">
+                  <input type="email" id="email" name="email" class="form-control" [(ngModel)]="userSimple.email"
+                    #email="ngModel" required />
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@youremailaddress">E-mail *</label>
+                  <div *ngIf="f.submitted && company_name.invalid" class="text-uppercase text-danger"
+                    i18n="@@emailrequired">
+                    Campo obrigatório
+                  </div>
+                </div>
+                <div class="form-group form-primary">
+                  <!-- <select id="language" name="language" class="form-control" [(ngModel)]="userSimple.language"
+                    #language="ngModel" required>
+                    <option value="">---</option>
+                    <option value="pt">Português</option>
+                    <option value="en">Inglês</option>
+                  </select> 
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@selectlanguage">Selecione a linguagem *</label>
+                  <div *ngIf="f.submitted && language.invalid" class="text-uppercase text-danger"
+                    i18n="@@emailrequired">
+                    Campo obrigatório
+                  </div>
+                    -->
+                  <input type="text" id="phone" name="phone" class="form-control"
+                  [(ngModel)]="userSimple.phone" #phone="ngModel" required />
+                <span class="form-bar"></span>
+                <label class="float-label" i18n="@@yourcellphone">Celular *</label>
+                  <div *ngIf="f.submitted && phone.invalid" class="text-uppercase text-danger"
+                  i18n="@@company_phonerequired">
+                  Campo obrigatório
+                </div>
+
+                </div>
+                <div class="form-group form-primary">
+                  <input type="text" id="company_name" name="company_name" class="form-control"
+                    [(ngModel)]="userSimple.company_name" #company_name="ngModel" required />
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@yourcompanyname">Empresa *</label>
+                  <div *ngIf="f.submitted && company_name.invalid" class="text-uppercase text-danger"
+                    i18n="@@company_namerequired">
+                    Campo obrigatório
+                  </div>
+                </div>
+
+                <div class="form-group form-primary">
+                  <input type="password" id="password" name="password" minlength="6" class="form-control"
+                    [(ngModel)]="userSimple.password" #password="ngModel" required />
+                  <span class="form-bar"></span>
+                  <label class="float-label" i18n="@@password">Password *</label>
+                  <div *ngIf="f.submitted && password.invalid" class="text-uppercase text-danger"
+                    i18n="@@passwordrequired">
+                    Campo obrigatório
+                  </div>
+                  <div *ngIf="
+                      password.invalid && (password.dirty || password.touched)
+                    ">
+                    <div *ngIf="password.errors.minlength" class="text-danger" i18n="@@passwordlength">
+                      A senha deve ter no mínimo 6 caracteres
+                    </div>
+                  </div>
+                </div>
+                <div class="row m-t-25 text-left">
+                  <div class="col-12">
+                    <div class="checkbox-fade fade-in-primary d-">
+                      <label>
+                        <input type="checkbox" name="termuse" [(ngModel)]="userSimple.termuse" #termuse="ngModel"
+                          [required]="userSimple.termuse == null" />
+                        <span class="cr"><i class="cr-icon fa fa-check txt-primary"></i></span>
+                        <span class="text-inverse" i18n="@@acceptuse">Aceito os </span><a href="https://www.explique.com.br/pliq-termos-de-uso/" target="_blank">termos de uso</a>
+                      </label>
+                      <div *ngIf="termuse.touched && termuse.errors?.required" class="text-uppercase text-danger"
+                        i18n="@@emailrequired">
+                        Campo obrigatório
+                      </div>
+                    </div>
+                    <div class="forgot-phone text-right float-right">
+                      <a style="visibility: hidden;" [routerLink]="['policies/terms']" class="text-right f-w-600"
+                        i18n="@@thermservice"></a>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="row m-t-30">
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-md btn-block text-center m-b-20 ripple light"
+                      i18n="@@SignUp">
+                      Experimente grátis
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-md btn-block text-center m-b-20 ripple light"
+                      routerLink="/" i18n="@@BackLogin">
+                      Voltar para Login
+                    </button>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="text-inverse text-center m-b-0">
+                      Dúvidas? Ligue ou converse via <br/>WhatsApp <b>(XX) XXXXX-XXXX</b>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- end of form -->
+        </div>
+        <!-- end of col-sm-12 -->
+      </div>
+      <!-- end of row -->
+    </div>
+    <!-- end of container-fluid -->
+  </form>
+</section>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box">
+  <p style="font-size: 20px; color: white">
+    Aguarde! <br />
+    Estamos preparando a sua conta!
+  </p>
+</ngx-spinner>
