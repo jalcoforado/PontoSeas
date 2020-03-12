@@ -1,0 +1,8 @@
+{
+  "name": "@angular/cdk-experimental/clipboard",
+  "typings": "../clipboard.d.ts",
+  "main": "../bundles/cdk-experimental-clipboard.umd.js",
+  "module": "../esm5/clipboard.es5.js",
+  "es2015": "../esm2015/clipboard.js",
+  "sideEffects": false
+}
